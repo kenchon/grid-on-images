@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hello!</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <a href="/">Grid on Images <br><span style="color: gray;"> // under construction 🚧</span></a>
+      </h1>
+      <nav class="pc-nav">
+        <ul>
+          <li>
+            <a href="https://kenmikanmi.github.io/blog/authors/Kenya-Hondoh"
+              >ABOUT</a
+            >
+          </li>
+          <li><a href="#">GitHub</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <div style="height: 300px"></div>
+
+    <div class="container">
+      <h1>画像にグリッドを表示します</h1>
+      <p>なんと縦長の画像には対応してません（工事中）</p>
+      <div class="grid-nav">
+        <label class="upload-label">
+          画像を選択
+          <input type="file" id="file" />
+        </label>
+        
+          <p>グリッドを表示</p>
+        <div class="switch">
+          <label class="switch__label">
+            <input type="checkbox" class="switch__input" onchange="drawGrid()"/>
+            <span class="switch__content"></span>
+            <span class="switch__circle"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper">
+        <canvas id="img-canvas"></canvas>
+        <canvas id="grid-canvas"></canvas>
+      </div>
+    </div>
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <!--     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div> -->
+    <script src="https://button.glitch.me/button.js" defer></script>
+  </body>
+</html>
