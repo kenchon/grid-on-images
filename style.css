@@ -56,6 +56,62 @@ li a {
   color: white;
 }
 
+.border-color div {
+  display: inline-block;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.button-white {
+  display: inline-block;
+  text-decoration: none;
+  background: white;
+  color: rgba(255, 255, 255, 0.47);
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 3px #ebebeb;
+  border: solid 2px rgba(255, 255, 255, 0.47);
+  transition: .4s;
+}
+
+.button-white:active {
+  background: #bababa;
+}
+
+.button-white:hover {
+  box-shadow: 0px 0px 0px 3px #bababa
+}
+
+.button-black {
+  display: inline-block;
+  text-decoration: none;
+  background: black;
+  color: rgba(255, 255, 255, 0.47);
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 3px #000000;
+  border: solid 2px rgba(255, 255, 255, 0.47);
+  transition: .4s;
+}
+
+.button-black:active {
+  background: #bababa;
+}
+
+.button-black:hover {
+  box-shadow: 0px 0px 0px 3px #bababa
+}
+
 .grid-nav p {
   padding-left: 20px;
   display: inline-block;

@@ -17,20 +17,24 @@
   <body>
     <header>
       <h1>
-        <a href="/">Grid on Images <br><span style="color: gray;"> // under construction 🚧</span></a>
+        <a href="/"
+          >Grid on Images <br /><span style="color: gray;">
+            // under construction 🚧</span
+          ></a
+        >
       </h1>
       <nav class="pc-nav">
         <ul>
           <li>
-            <a href="https://kenmikanmi.github.io/blog/authors/Kenya-Hondoh"
-              >ABOUT</a
-            >
+            <a href="https://kenmikanmi.github.io/blog/authors/Kenya-Hondoh">About</a>
           </li>
-          <li><a href="#">GitHub</a></li>
+          <li>
+            <a href="https://github.com/kenmikanmi/grid-on-images">Source</a>
+          </li>
         </ul>
       </nav>
     </header>
-    
+
     <div style="height: 300px"></div>
 
     <div class="container">
@@ -41,14 +45,29 @@
           画像を選択
           <input type="file" id="file" />
         </label>
-        
-          <p>グリッドを表示</p>
+
+        <p>グリッドを表示</p>
         <div class="switch">
           <label class="switch__label">
-            <input type="checkbox" class="switch__input" onchange="drawGrid()"/>
+            <input
+              type="checkbox"
+              class="switch__input"
+              onchange="drawGrid()"
+            />
             <span class="switch__content"></span>
             <span class="switch__circle"></span>
           </label>
+        </div>
+        
+       
+        <div class="border-color">
+           <p>グリッドの色を変更</p>
+          <div>
+            <a class="button-white" onclick="makeBorderColorWhite()"></a>
+          </div>
+          <div>
+            <a class="button-black" onclick="makeBorderColorBlack()"></a>
+          </div>
         </div>
       </div>
 
