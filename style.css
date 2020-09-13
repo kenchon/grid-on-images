@@ -20,7 +20,7 @@ h1 a {
 }
 
 header {
-  padding: 30px 4% 30px;
+  padding: 30px 4% 30px 30px;
   position: fixed;
   top: 0;
   width: 100%;
