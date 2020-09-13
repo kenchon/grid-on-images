@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Hello!</title>
+    <title>Grid on Images</title>
 
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="./style.css" />
+    <link rel="shortcut icon" href="./favicon.png">
 
     <!-- import the webpage's javascript file -->
     <script src="./script.js" defer></script>
@@ -19,19 +20,22 @@
       <img src="./grid-on-images.png"
            width="70px">
       <h1>
-        <a href="/"
-          >Grid on Images <br /><span style="color: gray; padding-left: 30px;">
-            // under construction 🚧</span
-          ></a
-        >
+        <a>
+          Grid on Images <br /><span style="color: gray; padding-left: 30px; font-style: italic">
+            // under construction 🚧</span>
+        </a>
       </h1>
       <nav class="pc-nav">
         <ul>
           <li>
-            <a href="https://kenmikanmi.github.io/blog/authors/Kenya-Hondoh">About</a>
+            <a href="https://kenmikanmi.github.io/blog/authors/Kenya-Hondoh">
+              <img src="./about-me.png" width="80px" style="padding-right: 40px">
+            </a>
           </li>
           <li>
-            <a href="https://github.com/kenmikanmi/grid-on-images">Source</a>
+            <a href="https://github.com/kenmikanmi/grid-on-images">
+              <img src="./github.png">
+            </a>
           </li>
         </ul>
       </nav>
@@ -41,7 +45,6 @@
 
     <div class="container">
       <h1>画像にグリッドを表示します</h1>
-      <p>なんと縦長の画像には対応してません（工事中）</p>
       <div class="grid-nav">
         <label class="upload-label">
           画像を選択
@@ -63,7 +66,7 @@
         
        
         <div class="border-color">
-           <p>グリッドの色を変更</p>
+           <p>グリッドの色</p>
           <div>
             <a class="button-white" onclick="makeBorderColorWhite()"></a>
           </div>
