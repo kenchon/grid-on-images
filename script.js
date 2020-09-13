@@ -2,8 +2,8 @@ var file = document.getElementById('file');
 var imgCanvas = document.getElementById('img-canvas');
 var gridCanvas = document.getElementById('grid-canvas');
 
-var canvasWidth = 1600;
-var canvasHeight = 1600;
+var canvasWidth = 0;
+var canvasHeight = 0;
 
 var uploadImgSrc;
 
@@ -58,7 +58,7 @@ function canvasDraw() {
       gridCanvas.width = img.width;
       canvasHeight = gridCanvas.height;
       canvasWidth = gridCanvas.width;
-      
+
       // Canvasに描画する
       ctx.drawImage(img, 0, 0);
     }

@@ -24,6 +24,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
+  min-width: 480px;
   background-color: #3D5B81;
   display: flex;
   align-items: center;
@@ -35,6 +36,7 @@ h1 {
   padding: 0;
   font-size: 30px;
   color: #293241;
+  min-width: 400px;
 }
 a {	
   text-decoration: none;
