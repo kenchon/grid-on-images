@@ -52,7 +52,13 @@ function canvasDraw() {
     var img = new Image();
     img.src = uploadImgSrc;
     img.onload = function() {
-        ctx.drawImage(img, 0, 0, canvasWidth, this.height * (canvasWidth / this.width));
+      imgCanvas.height = img.height;
+      imgCanvas.width  = img.width;
+      gridCanvas.height = img.height;
+      gridCanvas.width = img.width;
+
+      // Canvasに描画する
+      ctx.drawImage(img, 0, 0);
     }
   
     drawGrid();
