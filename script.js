@@ -56,7 +56,9 @@ function canvasDraw() {
       imgCanvas.width  = img.width;
       gridCanvas.height = img.height;
       gridCanvas.width = img.width;
-
+      canvasHeight = gridCanvas.height;
+      canvasWidth = gridCanvas.width;
+      
       // Canvasに描画する
       ctx.drawImage(img, 0, 0);
     }
