@@ -41,7 +41,7 @@ a {
   color: #4b4b4b;
 }
 nav {
-  margin: 0 0 0 auto;
+  margin: 0 50px 0 0;
   padding-right: 100px;
 }
 ul {
@@ -61,6 +61,7 @@ li a {
   display: inline-block;
   padding-left: 10px;
   padding-top: 10px;
+  padding-bottom: 30px;
 }
 
 .button-white {
