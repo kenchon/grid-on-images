@@ -3,7 +3,7 @@ var imgCanvas = document.getElementById('img-canvas');
 var gridCanvas = document.getElementById('grid-canvas');
 
 var canvasWidth = 1600;
-var canvasHeight = 900;
+var canvasHeight = 1600;
 
 var uploadImgSrc;
 
