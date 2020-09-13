@@ -91,18 +91,31 @@ function makeBorderColorWhite() {
     const checkbox = document.getElementsByClassName("switch__input");
     gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
     gridCtx.strokeStyle = 'white';
+    gridCtx.fillStyle = 'white';
   
     if (!checkbox[0].checked) {
       gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
     } else {
       const gridLength = 100;
       for (let i=0; i<=canvasHeight/gridLength; i++) {
+        i%3 == 0 ? gridCtx.lineWidth = 5 : gridCtx.lineWidth = 2;
+        if (i%3 == 0) {
+          gridCtx.font = "48px serif";
+          gridCtx.textBaseline = "hanging";
+          gridCtx.fillText(`${i/3}`, 5, i*gridLength + 5);
+        }
         gridCtx.beginPath();
         gridCtx.moveTo(0, i*gridLength);
         gridCtx.lineTo(canvasWidth, i*gridLength);
         gridCtx.stroke();
       }
       for (let j=0; j<=canvasWidth/gridLength; j++) {
+        j%3 == 0 ? gridCtx.lineWidth = 5 : gridCtx.lineWidth = 2;
+        if (j%3 == 0) {
+          gridCtx.font = "48px serif";
+          gridCtx.textBaseline = "hanging";
+          gridCtx.fillText(`${j/3}`, j*gridLength + 5, 5);
+        }
         gridCtx.beginPath();
         gridCtx.moveTo(j*gridLength, 0);
         gridCtx.lineTo(j*gridLength, canvasHeight);
@@ -115,18 +128,31 @@ function makeBorderColorBlack() {
     const checkbox = document.getElementsByClassName("switch__input");
     gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
     gridCtx.strokeStyle = 'black';
+    gridCtx.fillStyle = 'black';
   
     if (!checkbox[0].checked) {
       gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
     } else {
       const gridLength = 100;
       for (let i=0; i<=canvasHeight/gridLength; i++) {
+        i%3 == 0 ? gridCtx.lineWidth = 5 : gridCtx.lineWidth = 2;
+        if (i%3 == 0) {
+          gridCtx.font = "48px serif";
+          gridCtx.textBaseline = "hanging";
+          gridCtx.fillText(`${i/3}`, 5, i*gridLength + 5);
+        }
         gridCtx.beginPath();
         gridCtx.moveTo(0, i*gridLength);
         gridCtx.lineTo(canvasWidth, i*gridLength);
         gridCtx.stroke();
       }
       for (let j=0; j<=canvasWidth/gridLength; j++) {
+        j%3 == 0 ? gridCtx.lineWidth = 5 : gridCtx.lineWidth = 2;
+        if (j%3 == 0) {
+          gridCtx.font = "48px serif";
+          gridCtx.textBaseline = "hanging";
+          gridCtx.fillText(`${j/3}`, j*gridLength + 5, 5);
+        }
         gridCtx.beginPath();
         gridCtx.moveTo(j*gridLength, 0);
         gridCtx.lineTo(j*gridLength, canvasHeight);
