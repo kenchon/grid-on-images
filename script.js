@@ -1,21 +1,23 @@
-var file = document.getElementById('file');
+// 描画オブジェクトの初期化
 var imgCanvas = document.getElementById('img-canvas');
 var gridCanvas = document.getElementById('grid-canvas');
 
+var imgCtx = imgCanvas.getContext('2d');
+var gridCtx = gridCanvas.getContext('2d');
+
+// Canvasの初期化
 var canvasWidth = 0;
 var canvasHeight = 0;
 
-var uploadImgSrc;
-
-// Canvasの準備
 imgCanvas.width = canvasWidth;
 imgCanvas.height = canvasHeight;
-
 gridCanvas.width = canvasWidth;
 gridCanvas.height = canvasHeight;
 
-var ctx = imgCanvas.getContext('2d');
-var gridCtx = gridCanvas.getContext('2d');
+// アップロードファイルに関する初期化
+var file = document.getElementById('file');
+var uploadImgSrc;
+
 
 function loadLocalImage(e) {
     // ファイル情報を取得
@@ -45,7 +47,7 @@ file.addEventListener('change', loadLocalImage, false);
 // Canvas上に画像を表示する
 function canvasDraw() {
     // canvas内の要素をクリアする
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    imgCtx.clearRect(0, 0, canvasWidth, canvasHeight);
     gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
   
     // Canvas上に画像を表示
@@ -60,7 +62,7 @@ function canvasDraw() {
       canvasWidth = gridCanvas.width;
 
       // Canvasに描画する
-      ctx.drawImage(img, 0, 0);
+      imgCtx.drawImage(img, 0, 0);
     }
 }
 
@@ -73,9 +75,14 @@ document.getElementsByClassName("button-black")[0].onclick = () => makeGrid('bla
 
 // グリッド線を color 色で描画する
 function makeGrid(color) {
-  gridCtx.clearRect(0, 0, canvasWidth, canvasHeight); // キャンバスをリセットする
-  makeVerticalGrid(color);
-  makeHorizontalGrid(color);
+  // キャンバスをリセットする
+  gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+  // 「グリッドを表示」が ON なら，グリッドを描画する
+  const checkbox = document.getElementsByClassName('switch__input')[0]
+  if (checkbox.checked) {
+    makeVerticalGrid(color);
+    makeHorizontalGrid(color);
+  }
 }
 
 const gridLength = 100;
