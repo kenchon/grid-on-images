@@ -62,101 +62,70 @@ function canvasDraw() {
       // Canvasに描画する
       ctx.drawImage(img, 0, 0);
     }
-  
-    drawGrid();
 }
 
-function drawGrid() {
-    const checkbox = document.getElementsByClassName("switch__input");
-    if (!checkbox[0].checked) {
-      gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-    } else {
-      const gridLength = 100;
-      for (let i=0; i<=canvasHeight/gridLength; i++) {
-        gridCtx.beginPath();
-        gridCtx.moveTo(0, i*gridLength);
-        gridCtx.lineTo(canvasWidth, i*gridLength);
-        gridCtx.stroke();
-      }
-      for (let j=0; j<=canvasWidth/gridLength; j++) {
-        gridCtx.beginPath();
-        gridCtx.moveTo(j*gridLength, 0);
-        gridCtx.lineTo(j*gridLength, canvasHeight);
-        gridCtx.stroke();
-      }
-    }
+// グリッドを引くボタンを ON にしたときに，グリッドを白色で引く
+document.getElementsByClassName("switch__input")[0].onclick = function() {
+  gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+  makeVerticalGrid('white');
+  makeHorizontalGrid('white');
+}
+// グリッドの色を白に指定したときに，グリッドを白色で引く
+document.getElementsByClassName("button-white")[0].onclick = function() {
+  gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+  makeVerticalGrid('white');
+  makeHorizontalGrid('white');
+}
+// グリッドの色を黒に指定した時に，グリッドを黒色で引く
+document.getElementsByClassName("button-black")[0].onclick = function() {
+  gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+  makeVerticalGrid('black');
+  makeHorizontalGrid('black');
 }
 
-function makeBorderColorWhite() {
-    const checkbox = document.getElementsByClassName("switch__input");
-    gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-    gridCtx.strokeStyle = 'white';
-    gridCtx.fillStyle = 'white';
-  
-    if (!checkbox[0].checked) {
-      gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-    } else {
-      const gridLength = 100;
-      for (let i=0; i<=canvasHeight/gridLength; i++) {
-        i%3 == 0 ? gridCtx.lineWidth = 5 : gridCtx.lineWidth = 2;
-        if (i%3 == 0) {
-          gridCtx.font = "48px serif";
-          gridCtx.textBaseline = "hanging";
-          gridCtx.fillText(`${i/3}`, 5, i*gridLength + 5);
-        }
-        gridCtx.beginPath();
-        gridCtx.moveTo(0, i*gridLength);
-        gridCtx.lineTo(canvasWidth, i*gridLength);
-        gridCtx.stroke();
-      }
-      for (let j=0; j<=canvasWidth/gridLength; j++) {
-        j%3 == 0 ? gridCtx.lineWidth = 5 : gridCtx.lineWidth = 2;
-        if (j%3 == 0) {
-          gridCtx.font = "48px serif";
-          gridCtx.textBaseline = "hanging";
-          gridCtx.fillText(`${j/3}`, j*gridLength + 5, 5);
-        }
-        gridCtx.beginPath();
-        gridCtx.moveTo(j*gridLength, 0);
-        gridCtx.lineTo(j*gridLength, canvasHeight);
-        gridCtx.stroke();
-      }
+const gridLength = 100;
+
+// 垂直方向のグリッドを color 色で引く
+function makeVerticalGrid(color) {
+  gridCtx.strokeStyle = color;
+  gridCtx.fillStyle = color;
+
+  for (let i=0; i<=canvasHeight/gridLength; i++) {
+    gridCtx.lineWidth = 2;
+    if (i%3 == 0) {
+      gridCtx.lineWidth = 5
+      putGridNumber(color, i/3, 5, i*gridLength + 5)
     }
+    putLine(fromX=0, fromY=i*gridLength, toX=canvasWidth, toY=i*gridLength);
+  }
 }
 
-function makeBorderColorBlack() {
-    const checkbox = document.getElementsByClassName("switch__input");
-    gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-    gridCtx.strokeStyle = 'black';
-    gridCtx.fillStyle = 'black';
-  
-    if (!checkbox[0].checked) {
-      gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-    } else {
-      const gridLength = 100;
-      for (let i=0; i<=canvasHeight/gridLength; i++) {
-        i%3 == 0 ? gridCtx.lineWidth = 5 : gridCtx.lineWidth = 2;
-        if (i%3 == 0) {
-          gridCtx.font = "48px serif";
-          gridCtx.textBaseline = "hanging";
-          gridCtx.fillText(`${i/3}`, 5, i*gridLength + 5);
-        }
-        gridCtx.beginPath();
-        gridCtx.moveTo(0, i*gridLength);
-        gridCtx.lineTo(canvasWidth, i*gridLength);
-        gridCtx.stroke();
-      }
-      for (let j=0; j<=canvasWidth/gridLength; j++) {
-        j%3 == 0 ? gridCtx.lineWidth = 5 : gridCtx.lineWidth = 2;
-        if (j%3 == 0) {
-          gridCtx.font = "48px serif";
-          gridCtx.textBaseline = "hanging";
-          gridCtx.fillText(`${j/3}`, j*gridLength + 5, 5);
-        }
-        gridCtx.beginPath();
-        gridCtx.moveTo(j*gridLength, 0);
-        gridCtx.lineTo(j*gridLength, canvasHeight);
-        gridCtx.stroke();
-      }
+// 水平方向のグリッドを color 色で引く
+function makeHorizontalGrid(color) {
+  gridCtx.strokeStyle = color;
+  gridCtx.fillStyle = color;
+
+  for (let j=0; j<=canvasWidth/gridLength; j++) {
+    gridCtx.lineWidth = 2;
+    if (j%3 == 0) {
+      gridCtx.lineWidth = 5;
+      putGridNumber(color, j/3, j*gridLength + 5, 5);
     }
+    putLine(fromX=j*gridLength, fromY=0, toX=j*gridLength, toY=canvasHeight);
+  }
+}
+
+// (x, y) に color 色の num という数字を描画する
+function putGridNumber(color, num, x, y) {
+  gridCtx.font = "48px serif";
+  gridCtx.textBaseline = "hanging";
+  gridCtx.fillText(`${num}`, x, y);
+}
+
+// (fromX, fromY) から (toX, toY) に直線を引く
+function putLine(fromX, fromY, toX, toY) {
+  gridCtx.beginPath();
+  gridCtx.moveTo(fromX, fromY);
+  gridCtx.lineTo(toX, toY);
+  gridCtx.stroke();
 }
