@@ -65,22 +65,17 @@ function canvasDraw() {
 }
 
 // グリッドを引くボタンを ON にしたときに，グリッドを白色で引く
-document.getElementsByClassName("switch__input")[0].onclick = function() {
-  gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-  makeVerticalGrid('white');
-  makeHorizontalGrid('white');
-}
+document.getElementsByClassName("switch__input")[0].onclick = () => makeGrid('white');
 // グリッドの色を白に指定したときに，グリッドを白色で引く
-document.getElementsByClassName("button-white")[0].onclick = function() {
-  gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-  makeVerticalGrid('white');
-  makeHorizontalGrid('white');
-}
+document.getElementsByClassName("button-white")[0].onclick = () => makeGrid('white');
 // グリッドの色を黒に指定した時に，グリッドを黒色で引く
-document.getElementsByClassName("button-black")[0].onclick = function() {
-  gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-  makeVerticalGrid('black');
-  makeHorizontalGrid('black');
+document.getElementsByClassName("button-black")[0].onclick = () => makeGrid('black');
+
+// グリッド線を color 色で描画する
+function makeGrid(color) {
+  gridCtx.clearRect(0, 0, canvasWidth, canvasHeight); // キャンバスをリセットする
+  makeVerticalGrid(color);
+  makeHorizontalGrid(color);
 }
 
 const gridLength = 100;
