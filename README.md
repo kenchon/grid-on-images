@@ -7,9 +7,11 @@
 </center>
 
 - 画像にグリッドを表示するだけのツール
+- Simple web app to put gridlines on your saved image.
 - 写真・画像を模写したいときなどに役に立ちます
+- It helps you to copy pictures on your sketchbook.
 
 # Features
 
-- 端末に保存された写真をアップロードして，その上にグリッドを表示します
 - グリッドの色は白・黒の切り替えができます
+- You can choose favorable grid colors.
