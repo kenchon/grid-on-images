@@ -123,6 +123,10 @@ li a {
   display: inline;
 }
 
+#grid-canvas {
+  pointer-events: none;
+}
+
 .switch {
   padding: 10px;
   display: inline-block;
