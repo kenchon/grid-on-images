@@ -199,28 +199,29 @@ imgCanvas.addEventListener('mouseup', event => {
   end.y = diff.y;
 });
 
-let tapCount = 0;
-imgCanvas.addEventListener('touchstart', event => {
-  if(!tapCount) {
-    ++tapCount;
-    setTimeout( function() {
-			tapCount = 0 ;
-		}, 350 ) ;
-  } else {
-    isDragging = true;
-    start.x = event.clientX;
-    start.y = event.clientY;
-  }
-});
-imgCanvas.addEventListener('touchmove', event => {
-  if (isDragging) {
-    diff.x = end.x + (event.clientX - start.x) / scale;
-    diff.y = end.y + (event.clientY - start.y) / scale;
-    redraw();
-  }
-});
-imgCanvas.addEventListener('touchend', event => {
-  isDragging = false;
-  end.x = diff.x;
-  end.y = diff.y;
-});
+// let tapCount = 0;
+// imgCanvas.addEventListener('touchstart', event => {
+//   if(!tapCount) {
+//     ++tapCount;
+//     setTimeout( function() {
+// 			tapCount = 0 ;
+// 		}, 350 ) ;
+//   } else {
+//     isDragging = true;
+//     start.x = event.clientX;
+//     start.y = event.clientY;
+//     tapCount = 0;
+//   }
+// });
+// imgCanvas.addEventListener('touchmove', event => {
+//   if (isDragging) {
+//     diff.x = end.x + (event.clientX - start.x) / scale;
+//     diff.y = end.y + (event.clientY - start.y) / scale;
+//     redraw();
+//   }
+// });
+// imgCanvas.addEventListener('touchend', event => {
+//   isDragging = false;
+//   end.x = diff.x;
+//   end.y = diff.y;
+// });
