@@ -46,7 +46,7 @@ function loadLocalImage(e) {
 function canvasDraw() {
     // canvas内の要素をクリアする
     imgCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-    gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+    // gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
   
     // Canvas上に画像を表示
     let img = new Image();
@@ -129,3 +129,72 @@ function putLine(fromX, fromY, toX, toY) {
   gridCtx.lineTo(toX, toY);
   gridCtx.stroke();
 }
+
+const slider = document.getElementById('zoom-slider');
+slider.value = 1;
+// 倍率の最小・最大値
+slider.min = 0.01;
+slider.max = 2;
+// 粒度
+slider.step = 'any';
+let scale = 1;
+
+// スライダーが動いたら拡大・縮小して再描画する
+slider.addEventListener('input', e => {
+  let img = new Image();
+  img.src = uploadImgSrc;
+  // 一旦クリア 
+  imgCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+  // 倍率変更
+  scale = e.target.value;
+  imgCtx.scale(scale, scale);
+  // 再描画
+  imgCtx.drawImage(img, diff.x, diff.y);
+  // 変換マトリクスを元に戻す
+  imgCtx.scale(1 / scale, 1 / scale);
+});
+
+/** ドラッグで移動 */
+// ドラッグ状態かどうか
+let isDragging = false;
+
+// ドラッグ開始位置
+let start = {
+  x: 0,
+  y: 0
+};
+// ドラッグ中の位置
+let diff = {
+  x: 0,
+  y: 0
+};
+// ドラッグ終了後の位置
+let end = {
+  x: 0,
+  y: 0
+}
+const redraw = () => {
+  let img = new Image();
+  img.src = uploadImgSrc;
+  imgCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+  imgCtx.scale(scale, scale);
+  imgCtx.drawImage(img, diff.x, diff.y);
+  imgCtx.scale(1 / scale, 1 / scale);
+};
+imgCanvas.addEventListener('mousedown', event => {
+  isDragging = true;
+  start.x = event.clientX;
+  start.y = event.clientY;
+});
+imgCanvas.addEventListener('mousemove', event => {
+  if (isDragging) {
+    diff.x = end.x + (event.clientX - start.x) / scale;
+    diff.y = end.y + (event.clientY - start.y) / scale;
+    redraw();
+  }
+});
+imgCanvas.addEventListener('mouseup', event => {
+  isDragging = false;
+  end.x = diff.x;
+  end.y = diff.y;
+});
