@@ -198,3 +198,21 @@ imgCanvas.addEventListener('mouseup', event => {
   end.x = diff.x;
   end.y = diff.y;
 });
+
+imgCanvas.addEventListener('touchstart', event => {
+  isDragging = true;
+  start.x = event.clientX;
+  start.y = event.clientY;
+});
+imgCanvas.addEventListener('touchmove', event => {
+  if (isDragging) {
+    diff.x = end.x + (event.clientX - start.x) / scale;
+    diff.y = end.y + (event.clientY - start.y) / scale;
+    redraw();
+  }
+});
+imgCanvas.addEventListener('touchend', event => {
+  isDragging = false;
+  end.x = diff.x;
+  end.y = diff.y;
+});
