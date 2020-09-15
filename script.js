@@ -1,13 +1,13 @@
 // 描画オブジェクトの初期化
-var imgCanvas = document.getElementById('img-canvas');
-var gridCanvas = document.getElementById('grid-canvas');
+let imgCanvas = document.getElementById('img-canvas');
+let gridCanvas = document.getElementById('grid-canvas');
 
-var imgCtx = imgCanvas.getContext('2d');
-var gridCtx = gridCanvas.getContext('2d');
+let imgCtx = imgCanvas.getContext('2d');
+let gridCtx = gridCanvas.getContext('2d');
 
 // Canvasの初期化
-var canvasWidth = 0;
-var canvasHeight = 0;
+let canvasWidth = 0;
+let canvasHeight = 0;
 
 imgCanvas.width = canvasWidth;
 imgCanvas.height = canvasHeight;
@@ -15,13 +15,14 @@ gridCanvas.width = canvasWidth;
 gridCanvas.height = canvasHeight;
 
 // アップロードファイルに関する初期化
-var file = document.getElementById('file');
-var uploadImgSrc;
-
+let file = document.getElementById('file');
+// ファイルが指定された時にloadLocalImage()を実行
+file.addEventListener('change', loadLocalImage, false);
+let uploadImgSrc;
 
 function loadLocalImage(e) {
     // ファイル情報を取得
-    var fileData = e.target.files[0];
+    let fileData = e.target.files[0];
 
     // 画像ファイル以外は処理を止める
     if(!fileData.type.match('image.*')) {
@@ -30,7 +31,7 @@ function loadLocalImage(e) {
     }
 
     // FileReaderオブジェクトを使ってファイル読み込み
-    var reader = new FileReader();
+    let reader = new FileReader();
     // ファイル読み込みに成功したときの処理
     reader.onload = function() {
         // Canvas上に表示する
@@ -41,9 +42,6 @@ function loadLocalImage(e) {
     reader.readAsDataURL(fileData);
 }
 
-// ファイルが指定された時にloadLocalImage()を実行
-file.addEventListener('change', loadLocalImage, false);
-
 // Canvas上に画像を表示する
 function canvasDraw() {
     // canvas内の要素をクリアする
@@ -51,7 +49,7 @@ function canvasDraw() {
     gridCtx.clearRect(0, 0, canvasWidth, canvasHeight);
   
     // Canvas上に画像を表示
-    var img = new Image();
+    let img = new Image();
     img.src = uploadImgSrc;
     img.onload = function() {
       imgCanvas.height = img.height;
