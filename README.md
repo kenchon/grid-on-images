@@ -1,6 +1,6 @@
 # Grid on Images
 
-👉 [Here you can use this](https://kenmikanmi.github.io/grid-on-images/)
+👉 [Here you can use this](https://kenchon.github.io/grid-on-images/)
 
 <center>
     <img src="./assets/grid-on-images.png" width="200px">
